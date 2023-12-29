@@ -9,6 +9,7 @@ const CloseSvg = () => {
       width="24"
       height="24"
       viewBox="0 0 48 48"
+      className="h-3 w-3 sm:h-6 sm:w-6"
     >
       <path
         fill="#f44336"

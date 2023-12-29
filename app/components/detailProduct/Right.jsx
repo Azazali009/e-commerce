@@ -18,7 +18,7 @@ const Right = ({ productId }) => {
   console.log(colorsArr);
   return (
     <div className=" flex flex-col gap-6">
-      <h2 className="text-2xl font-semibold capitalize text-slate-900 ">
+      <h2 className="text-sm font-semibold capitalize text-slate-900 sm:text-2xl ">
         {title}
       </h2>
       <div className=" flex items-center gap-2">
@@ -43,10 +43,10 @@ const Right = ({ productId }) => {
           {category}
         </Link>{" "}
       </p>
-      <p className=" text-2xl font-medium text-slate-900">
+      <p className=" text-xl font-medium text-slate-900 sm:text-2xl">
         {formateCurrency(price)}
       </p>
-      <p className=" text-sm">{description}</p>
+      <p className=" text-xs sm:text-sm">{description}</p>
       <div className=" grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {/* color */}
         <Select

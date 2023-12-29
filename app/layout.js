@@ -22,7 +22,7 @@ export default function RootLayout({ children }) {
       <body className={inter.className}>
         <TanstackProvider>
           <Header />
-          <main className=" min-h-dvh text-slate-900">{children}</main>
+          <main className=" min-h-dvh bg-white text-slate-900">{children}</main>
           <Footer />
         </TanstackProvider>
       </body>

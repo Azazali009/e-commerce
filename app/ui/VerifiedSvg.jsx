@@ -9,6 +9,7 @@ const VerifiedSvg = () => {
       fill="none"
       viewBox="0 0 24 24"
       id="verified"
+      className="h-3 w-3 sm:h-4 sm:w-4"
     >
       <g clip-path="url(#clip0_1084_3803)">
         <path
