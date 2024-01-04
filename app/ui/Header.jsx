@@ -19,6 +19,10 @@ const Header = () => {
           <span className={smooch.className}>Awan</span>
           <span>LLC</span>
         </h2>
+
+        <Navbar />
+      </div>
+      <div className=" flex gap-4">
         <button onClick={() => setMobNav(true)} className=" block sm:hidden">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -35,10 +39,8 @@ const Header = () => {
             />
           </svg>
         </button>
-
-        <Navbar />
+        <Navleft />
       </div>
-      <Navleft />
 
       <MobileNavbar setMobNav={setMobNav} mobNav={mobNav} />
     </header>

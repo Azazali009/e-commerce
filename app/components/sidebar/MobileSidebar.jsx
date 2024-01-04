@@ -22,7 +22,8 @@ const MobileSidebar = ({
   return (
     <div className={`fixed inset-0 z-30 bg-gray-700/[.4]`}>
       <div
-        className={`animate-in absolute left-0 top-0 z-30 flex flex-col gap-3 bg-black px-3 pt-6`}
+        className={`animate-in absolute left-0 top-0
+        z-30 flex flex-col gap-3 bg-black px-3 pb-8 pt-6`}
       >
         <button
           onClick={() => setShowsidebar(false)}

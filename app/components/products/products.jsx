@@ -150,7 +150,7 @@ const Products = () => {
       </div>
       <div>
         <div className="flex  flex-col items-center justify-between gap-4 px-4 sm:flex-row sm:gap-0 md:mb-8">
-          <div role="tablist" className="tabs-boxed tabs">
+          <div role="tablist" className="tabs-boxed tabs bg-gray-100">
             <button
               onClick={handleStockClick}
               value={"All"}
