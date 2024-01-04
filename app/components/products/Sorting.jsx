@@ -11,7 +11,7 @@ const Sorting = ({ sortValue, setSortValue }) => {
         sort by :
       </p>
       <select
-        className="select select-info select-xs w-full max-w-[15rem] capitalize text-slate-700  sm:select-sm"
+        className="select select-info select-xs w-full max-w-[15rem] bg-white capitalize text-slate-700  sm:select-sm"
         value={sortValue}
         onChange={handleChange}
       >
