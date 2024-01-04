@@ -83,7 +83,7 @@ const Products = () => {
   const handleStockClick = (e) => {
     setStockValue(e.target.value);
   };
-  if (isLoading) return <PageSkeleton />;
+  if (!isLoading) return <PageSkeleton />;
   if (isError) return <ErrorMessage heading={"Products"} />;
 
   return (
