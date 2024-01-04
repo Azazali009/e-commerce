@@ -1,21 +1,70 @@
 "use client";
 import Select from "@/app/ui/Select";
 import Link from "next/link";
-import React from "react";
+import React, { useState } from "react";
 import ReactStars from "react-stars";
-import { useProduct } from "./useProduct";
 import { formateCurrency } from "@/app/helpers/formateCurrency";
 import RightLoader from "./RightLoader";
 import ErrorMessage from "@/app/ui/ErrorMessage";
+import { useCart } from "@/app/context/CartContext";
+import { useRouter } from "next/navigation";
+import toast from "react-hot-toast";
 
-const Right = ({ productId }) => {
-  const { Product, isLoading, isError } = useProduct(productId);
-  if (isLoading) return <RightLoader />;
-  if (isError) return <ErrorMessage heading={"content"} />;
-  const { title, rating, reviews, description, price, category, colors } =
-    Product;
+const Right = ({ Product }) => {
+  const router = useRouter();
+  const [selectedQuantity, setSelectedQuantity] = useState(1);
+  const [selectedColor, setSelectedColor] = useState("");
+  const [selectedSize, setSelectedSize] = useState("");
+  const { handleAddToCart, cart, setCart } = useCart();
+  const {
+    id,
+    title,
+    rating,
+    images,
+    reviews,
+    description,
+    price,
+    category,
+    colors,
+    isSizeAble,
+  } = Product;
   const colorsArr = JSON?.parse(colors);
-  console.log(colorsArr);
+  const image = JSON?.parse(images)[0]?.src;
+
+  const handleClick = () => {
+    const isInCart = cart?.find(
+      (curItem) =>
+        curItem.id === id + selectedColor + selectedSize &&
+        curItem.color === selectedColor &&
+        curItem.size === selectedSize,
+    );
+    if (isInCart) {
+      let updatedProducts = cart?.map((curItem) => {
+        if (curItem.id === id) {
+          return {
+            ...curItem,
+            quantity: Number(curItem.quantity) + Number(selectedQuantity),
+          };
+        } else return curItem;
+      });
+      toast.success("Cart updated successfully");
+      return setCart(updatedProducts);
+    } else {
+      handleAddToCart({
+        id: id + selectedColor + selectedSize,
+        title,
+        image,
+        price,
+        category,
+        quantity: selectedQuantity,
+        color: selectedColor,
+        size: selectedSize,
+      });
+      router.push("/cart");
+      toast.success("item added to the cart");
+    }
+  };
+
   return (
     <div className=" flex flex-col gap-6">
       <h2 className="text-sm font-semibold capitalize text-slate-900 sm:text-2xl ">
@@ -51,6 +100,8 @@ const Right = ({ productId }) => {
         {/* color */}
         <Select
           defaultValue={"choose color"}
+          value={selectedColor}
+          onChange={(e) => setSelectedColor(e.target?.value)}
           label={"color"}
           options={colorsArr}
         />
@@ -58,7 +109,8 @@ const Right = ({ productId }) => {
         {/* quantity */}
         <Select
           label={"quantity"}
-          defaultValue={"1"}
+          onChange={(e) => Number(setSelectedQuantity(e.target?.value))}
+          value={selectedQuantity}
           options={[
             { value: 1 },
             { value: 2 },
@@ -71,24 +123,32 @@ const Right = ({ productId }) => {
           ]}
         />
         {/* size */}
-        <Select
-          defaultValue={"choose size"}
-          label={"size"}
-          options={[
-            { value: "4xl" },
-            { value: "5xl" },
-            { value: "6xl" },
-            { value: "7xl" },
-            { value: "8xl" },
-            { value: "9xl" },
-            { value: "10xl" },
-          ]}
-        />
+        {isSizeAble && (
+          <Select
+            defaultValue={"choose size"}
+            value={selectedSize}
+            onChange={(e) => setSelectedSize(e.target?.value)}
+            label={"size"}
+            options={[
+              { value: "S" },
+              { value: "M" },
+              { value: "L" },
+              { value: "XL" },
+            ]}
+          />
+        )}
       </div>
-      <button className="btn btn-primary capitalize duration-300 hover:bg-transparent hover:text-slate-900 ">
+      <button
+        disabled={selectedColor === "" || (isSizeAble && selectedSize === "")}
+        onClick={handleClick}
+        className="btn btn-primary capitalize duration-300 hover:bg-transparent hover:text-slate-900 "
+      >
         add to cart
       </button>
-      <button className="btn btn-secondary capitalize duration-300 hover:bg-transparent hover:text-slate-900 ">
+      <button
+        disabled={selectedColor === "" || (isSizeAble && selectedSize === "")}
+        className="btn btn-secondary capitalize duration-300 hover:bg-transparent hover:text-slate-900 "
+      >
         add to wishlist
       </button>
     </div>

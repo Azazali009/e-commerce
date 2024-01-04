@@ -1,12 +1,24 @@
 import { getOptions } from "@/app/helpers/getOptions";
 import React from "react";
 
-const Category = ({ category, setCategory, Products, isLoading }) => {
+const Category = ({
+  category,
+  setCategory,
+  Products,
+  isLoading,
+  dark = false,
+}) => {
   const categories = getOptions(Products, "category");
 
   return (
-    <div className=" border-b pb-3">
-      <h3 className="mb-2 font-semibold capitalize text-slate-900">category</h3>
+    <div className={` ${dark && " border-b-gray-900"} border-b pb-3`}>
+      <h3
+        className={`mb-2 font-semibold capitalize ${
+          dark ? " text-white" : "text-slate-900 "
+        }`}
+      >
+        category
+      </h3>
       <ul className=" flex flex-col gap-1">
         {isLoading
           ? [...new Array(3)]?.map((_, i) => {
@@ -25,7 +37,9 @@ const Category = ({ category, setCategory, Products, isLoading }) => {
                       curItem?.replace("_", " ") === category
                         ? " text-yellow-500"
                         : "text-black"
-                    } text-sm capitalize hover:text-yellow-500`}
+                    } text-sm capitalize hover:text-yellow-500 ${
+                      dark ? "text-white" : " text-black"
+                    }`}
                   >
                     {curItem}
                   </button>

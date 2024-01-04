@@ -1,6 +1,8 @@
 import React from "react";
 import Category from "./Category";
 import Colors from "./Colors";
+import PriceRange from "./PriceRange";
+import ClearAllFilter from "./ClearAllFilter";
 
 const MobileSidebar = ({
   showSidebar,
@@ -13,35 +15,39 @@ const MobileSidebar = ({
   setCategory,
   colorValue,
   setColorValue,
+  setPriceValue,
+  priceValue,
+  maxPriceValue,
 }) => {
   return (
-    <div className=" fixed inset-0 z-30 bg-gray-700/[.4]">
+    <div className={`fixed inset-0 z-30 bg-gray-700/[.4]`}>
       <div
-        className={`${
-          !showSidebar
-            ? " pointer-events-none invisible -translate-x-12 opacity-0"
-            : "pointer-events-auto visible translate-x-0 opacity-100"
-        } absolute left-0 top-0 z-30 flex min-h-screen flex-col gap-3 bg-red-500 px-3 pt-2 transition-all duration-700`}
+        className={`animate-in absolute left-0 top-0 z-30 flex flex-col gap-3 bg-black px-3 pt-6`}
       >
-        <label
+        <button
           onClick={() => setShowsidebar(false)}
-          className="btn btn-circle swap swap-rotate btn-xs mb-2 ml-2 border-none bg-yellow-500 lg:hidden "
+          className="btn btn-circle btn-xs absolute -right-3 top-2 border-none lg:hidden "
         >
-          <input type="checkbox" checked={showSidebar} />
+          {/* <input type="checkbox" checked={showSidebar} /> */}
 
           {/* close icon */}
-          <div className=" swap-on flex items-center justify-center">
-            <svg
-              className=" fill-current"
-              xmlns="http://www.w3.org/2000/svg"
-              width="14"
-              height="14"
-              viewBox="0 0 512 512"
-            >
-              <polygon points="400 145.49 366.51 112 256 222.51 145.49 112 112 145.49 222.51 256 112 366.51 145.49 400 256 289.49 366.51 400 400 366.51 289.49 256 400 145.49" />
-            </svg>
-          </div>
-        </label>
+          {/* <div className="flex items-center justify-center"> */}
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            strokeWidth="1.5"
+            stroke="currentColor"
+            className="h-3 w-3"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M6 18 18 6M6 6l12 12"
+            />
+          </svg>
+          {/* </div> */}
+        </button>
         <input
           type="text"
           value={searchValue}
@@ -55,11 +61,27 @@ const MobileSidebar = ({
           category={category}
           setCategory={setCategory}
           isLoading={isLoading}
+          dark={true}
         />
         <Colors
           Products={Products}
           colorValue={colorValue}
           setColorValue={setColorValue}
+          dark={true}
+        />
+        <PriceRange
+          priceValue={priceValue}
+          setPriceValue={setPriceValue}
+          maxPriceValue={maxPriceValue}
+          dark={true}
+        />
+        <ClearAllFilter
+          setSearchValue={setSearchValue}
+          setCategory={setCategory}
+          setColorValue={setColorValue}
+          setPriceValue={setPriceValue}
+          maxPriceValue={maxPriceValue}
+          dark={true}
         />
       </div>
     </div>

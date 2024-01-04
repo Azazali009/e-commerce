@@ -2,17 +2,13 @@
 import React from "react";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from "react-responsive-carousel";
-import { useProduct } from "./useProduct";
 import LeftLoader from "./LeftLoader";
 import ErrorMessage from "@/app/ui/ErrorMessage";
 import BackSvg from "@/app/ui/BackSvg";
 import { useRouter } from "next/navigation";
 
-const Left = ({ productId }) => {
+const Left = ({ Product }) => {
   const router = useRouter();
-  const { Product, isLoading, isError } = useProduct(productId);
-  if (isLoading) return <LeftLoader />;
-  if (isError) return <ErrorMessage heading={"images"} />;
   const imageArr = JSON.parse(Product?.images);
 
   return (

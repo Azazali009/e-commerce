@@ -7,20 +7,23 @@ const Select = ({
   size = {},
   value,
   onChange,
+  error,
 }) => {
   return (
     <div className="flex flex-col gap-2">
       <label className="text-sm capitalize text-slate-900">{label}</label>
       <select
         value={value}
-        onChange={(e) => onChange(e.target.value)}
-        className={`select select-warning ${
+        onChange={onChange}
+        className={`select ${
+          error ? " select-error bg-red-500" : "select-warning"
+        } ${
           size === "mini"
             ? " select-sm w-full max-w-[10rem]"
             : "select-sm w-full max-w-xs "
         } w-full max-w-xs`}
       >
-        <option selected value={defaultValue}>
+        <option selected value="">
           {defaultValue}
         </option>
         {options?.map((option) => {
@@ -31,6 +34,11 @@ const Select = ({
           );
         })}
       </select>
+      {error && (
+        <span className=" flex h-6 animate-bounce items-center justify-center rounded-full bg-red-200 text-center text-sm text-red-700">
+          This field is required.
+        </span>
+      )}
     </div>
   );
 };

@@ -7,9 +7,11 @@ const Sorting = ({ sortValue, setSortValue }) => {
   };
   return (
     <div className=" flex items-center gap-2 whitespace-nowrap">
-      <p className=" capitalize text-slate-600">sort by :</p>
+      <p className=" text-xs capitalize text-slate-600 sm:text-base">
+        sort by :
+      </p>
       <select
-        className="select select-info select-sm w-full max-w-[15rem] capitalize  text-slate-700"
+        className="select select-info select-xs w-full max-w-[15rem] capitalize text-slate-700  sm:select-sm"
         value={sortValue}
         onChange={handleChange}
       >

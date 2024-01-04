@@ -25,7 +25,7 @@ const Card = ({ product }) => {
         <Image
           width={200}
           height={200}
-          className=" h-[100px] w-[50%] object-contain transition-all  duration-300 group-hover:scale-105 sm:w-full lg:h-[300px] "
+          className=" h-[100px] w-[50%] object-contain transition-all duration-300 group-hover:scale-105 sm:w-full lg:h-[300px] "
           src={firstImage}
           alt="car!"
         />
@@ -45,7 +45,7 @@ const Card = ({ product }) => {
           />
           <span className=" text-sm">{rating}</span>
         </div>
-        <p className=" text-[8px] lowercase sm:text-xs">
+        <p className=" text-[8px] lowercase sm:text-sm">
           {description?.slice(0, 40)}...
         </p>
         <p className="flex items-center gap-2 text-[8px] font-semibold capitalize sm:text-base sm:font-bold lg:text-[13px]">
@@ -69,7 +69,7 @@ const Card = ({ product }) => {
               e.stopPropagation();
               alert("rukho zara abhi koi event nahi hai 😍");
             }}
-            className=" flex items-center justify-center rounded bg-slate-900 px-2 py-1 text-[6px] capitalize text-white transition-all duration-200 md:btn-sm hover:scale-90 hover:bg-slate-800 sm:text-xs md:px-4 md:py-2"
+            className=" flex items-center justify-center rounded bg-slate-900 px-2 py-1 text-[8px] capitalize text-white transition-all duration-200 md:btn-sm hover:scale-90 hover:bg-slate-800 sm:text-sm md:px-4 md:py-2"
           >
             add to cart!
           </button>

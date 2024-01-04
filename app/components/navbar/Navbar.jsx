@@ -3,7 +3,7 @@ import React from "react";
 
 const Navbar = () => {
   return (
-    <nav>
+    <nav className="hidden sm:block">
       <ul className=" flex gap-3">
         <li className=" capitalize transition-all duration-200 hover:text-yellow-500">
           <Link href={"/"}>home</Link>

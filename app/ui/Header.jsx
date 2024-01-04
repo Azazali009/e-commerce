@@ -1,11 +1,15 @@
+"use client";
 import Link from "next/link";
-import React from "react";
+import React, { useState } from "react";
 import { smooch } from "../components/utils/SmoochFont";
 import Navbar from "../components/navbar/Navbar";
+import Navleft from "../components/navbar/Navleft";
+import MobileNavbar from "../components/navbar/MobileNavbar";
 
 const Header = () => {
+  const [mobNav, setMobNav] = useState(false);
   return (
-    <header className="navbar flex justify-between bg-slate-900 text-white">
+    <header className="navbar relative flex justify-between bg-slate-900 px-6 text-white">
       <div className=" flex gap-6">
         <h2
           className={
@@ -15,9 +19,28 @@ const Header = () => {
           <span className={smooch.className}>Awan</span>
           <span>LLC</span>
         </h2>
+        <button onClick={() => setMobNav(true)} className=" block sm:hidden">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className=" h-5 w-5"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2"
+              d="M4 6h16M4 12h16M4 18h7"
+            />
+          </svg>
+        </button>
+
         <Navbar />
       </div>
-      <p>cart</p>
+      <Navleft />
+
+      <MobileNavbar setMobNav={setMobNav} mobNav={mobNav} />
     </header>
   );
 };

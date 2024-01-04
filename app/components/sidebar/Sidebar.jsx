@@ -2,6 +2,8 @@
 import React from "react";
 import Category from "./Category";
 import Colors from "./Colors";
+import ClearAllFilter from "./ClearAllFilter";
+import PriceRange from "./PriceRange";
 
 const Sidebar = ({
   category,
@@ -10,6 +12,9 @@ const Sidebar = ({
   setSearchValue,
   colorValue,
   setColorValue,
+  priceValue,
+  setPriceValue,
+  maxPriceValue,
   Products,
   isLoading,
 }) => {
@@ -33,6 +38,18 @@ const Sidebar = ({
         Products={Products}
         colorValue={colorValue}
         setColorValue={setColorValue}
+      />
+      <PriceRange
+        priceValue={priceValue}
+        setPriceValue={setPriceValue}
+        maxPriceValue={maxPriceValue}
+      />
+      <ClearAllFilter
+        setSearchValue={setSearchValue}
+        setCategory={setCategory}
+        setColorValue={setColorValue}
+        setPriceValue={setPriceValue}
+        maxPriceValue={maxPriceValue}
       />
     </aside>
   );

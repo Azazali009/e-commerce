@@ -3,6 +3,7 @@ import "./globals.css";
 import Header from "./ui/Header";
 import Footer from "./components/footer/Footer";
 import TanstackProvider from "./TanstackProvider";
+import CartProvider from "./context/CartContext";
 
 const inter = Poppins({
   subsets: ["latin"],
@@ -21,9 +22,13 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={inter.className}>
         <TanstackProvider>
-          <Header />
-          <main className=" min-h-dvh bg-white text-slate-900">{children}</main>
-          <Footer />
+          <CartProvider>
+            <Header />
+            <main className=" min-h-dvh bg-white text-slate-900">
+              {children}
+            </main>
+            <Footer />
+          </CartProvider>
         </TanstackProvider>
       </body>
     </html>

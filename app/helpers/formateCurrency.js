@@ -1,5 +1,5 @@
 export function formateCurrency(currency) {
-  const formateCurrency = currency.toLocaleString("en-US", {
+  const formateCurrency = currency?.toLocaleString("en-US", {
     style: "currency",
     currency: "USD",
   });
