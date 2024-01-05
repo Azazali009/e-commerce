@@ -50,7 +50,7 @@ const Card = ({ product }) => {
         </p>
         <p className="flex items-center gap-2 text-[8px] font-semibold capitalize sm:text-base sm:font-bold lg:text-[13px]">
           <span className={`${stock > 0 ? "text-black" : " text-red-500"}`}>
-            {stock > 0 ? "Instock" : "out of stock"}
+            {stock > 0 ? "Instock" : "Leading"}
           </span>{" "}
           :
           <span className="  font-normal">

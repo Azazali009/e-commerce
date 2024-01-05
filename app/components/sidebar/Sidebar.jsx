@@ -1,7 +1,6 @@
 "use client";
 import React from "react";
 import Category from "./Category";
-import Colors from "./Colors";
 import ClearAllFilter from "./ClearAllFilter";
 import PriceRange from "./PriceRange";
 
@@ -26,7 +25,7 @@ const Sidebar = ({
         disabled={isLoading}
         onChange={(e) => setSearchValue(e.target.value)}
         placeholder="search product..."
-        className="input input-bordered input-warning input-sm w-full max-w-[15rem]"
+        className="input input-bordered input-warning input-sm w-full max-w-[15rem] bg-gray-200"
       />
       <Category
         Products={Products}
@@ -34,11 +33,11 @@ const Sidebar = ({
         setCategory={setCategory}
         isLoading={isLoading}
       />
-      <Colors
+      {/* <Colors
         Products={Products}
         colorValue={colorValue}
         setColorValue={setColorValue}
-      />
+      /> */}
       <PriceRange
         priceValue={priceValue}
         setPriceValue={setPriceValue}

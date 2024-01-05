@@ -15,7 +15,7 @@ const Select = ({
       <select
         value={value}
         onChange={onChange}
-        className={`select ${
+        className={`select bg-gray-100 ${
           error ? " select-error bg-red-500" : "select-warning"
         } ${
           size === "mini"

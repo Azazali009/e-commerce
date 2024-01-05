@@ -88,3 +88,19 @@
     transform: translateX(0px);
   }
 }
+.skeleton {
+  background-color: #e5e7eb;
+  background-image: linear-gradient(
+    105deg,
+    transparent 0%,
+    transparent 40%,
+    #d1d5db,
+    50%,
+    transparent 60%,
+    transparent 100%
+  );
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}

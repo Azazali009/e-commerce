@@ -150,12 +150,14 @@ const Products = () => {
       </div>
       <div>
         <div className="flex  flex-col items-center justify-between gap-4 px-4 sm:flex-row sm:gap-0 md:mb-8">
-          <div role="tablist" className="tabs-boxed tabs bg-gray-100">
+          <div role="tablist" className="tabs-boxed tabs bg-gray-200  ">
             <button
               onClick={handleStockClick}
               value={"All"}
               role="tab"
-              className={`tab ${stockValue === "All" && " tab-active"}`}
+              className={`tab text-black ${
+                stockValue === "All" && " tab-active"
+              }`}
             >
               All
             </button>
@@ -163,7 +165,9 @@ const Products = () => {
               onClick={handleStockClick}
               value={"instock"}
               role="tab"
-              className={`tab ${stockValue === "instock" && " tab-active"}`}
+              className={`tab text-black ${
+                stockValue === "instock" && " tab-active"
+              }`}
             >
               in stock
             </button>
@@ -171,9 +175,11 @@ const Products = () => {
               onClick={handleStockClick}
               value={"outstock"}
               role="tab"
-              className={`tab ${stockValue === "outstock" && " tab-active"}`}
+              className={`tab text-black ${
+                stockValue === "outstock" && " tab-active"
+              }`}
             >
-              out of stock
+              leading
             </button>
           </div>
           <div>

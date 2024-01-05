@@ -3,7 +3,7 @@ import React from "react";
 import { smooch } from "../utils/SmoochFont";
 import { formateCurrency } from "@/app/helpers/formateCurrency";
 
-const Banner = ({ src }) => {
+const Banner = ({ src, title }) => {
   return (
     <div className=" relative">
       <Image
@@ -29,9 +29,9 @@ const Banner = ({ src }) => {
         </p>
       </div>
       <div
-        className={` ${smooch.className} absolute bottom-0 left-0 flex w-full items-center justify-center bg-yellow-400/[.5] text-2xl font-bold uppercase text-slate-600 sm:text-7xl`}
+        className={`  absolute bottom-0 left-0 flex w-full items-center justify-center bg-yellow-400/[.5] text-2xl font-medium uppercase italic text-slate-600 sm:text-5xl`}
       >
-        joggers
+        {title}
       </div>
     </div>
   );

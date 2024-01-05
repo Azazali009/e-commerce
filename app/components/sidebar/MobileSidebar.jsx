@@ -1,6 +1,5 @@
 import React from "react";
 import Category from "./Category";
-import Colors from "./Colors";
 import PriceRange from "./PriceRange";
 import ClearAllFilter from "./ClearAllFilter";
 
@@ -64,12 +63,12 @@ const MobileSidebar = ({
           isLoading={isLoading}
           dark={true}
         />
-        <Colors
+        {/* <Colors
           Products={Products}
           colorValue={colorValue}
           setColorValue={setColorValue}
           dark={true}
-        />
+        /> */}
         <PriceRange
           priceValue={priceValue}
           setPriceValue={setPriceValue}

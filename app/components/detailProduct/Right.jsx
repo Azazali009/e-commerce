@@ -98,13 +98,13 @@ const Right = ({ Product }) => {
       <p className=" text-xs sm:text-sm">{description}</p>
       <div className=" grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {/* color */}
-        <Select
+        {/* <Select
           defaultValue={"choose color"}
           value={selectedColor}
           onChange={(e) => setSelectedColor(e.target?.value)}
           label={"color"}
           options={colorsArr}
-        />
+        /> */}
 
         {/* quantity */}
         <Select
@@ -139,14 +139,14 @@ const Right = ({ Product }) => {
         )}
       </div>
       <button
-        disabled={selectedColor === "" || (isSizeAble && selectedSize === "")}
+        disabled={isSizeAble && selectedSize === ""}
         onClick={handleClick}
         className="btn btn-primary capitalize duration-300 hover:bg-transparent hover:text-slate-900 "
       >
         add to cart
       </button>
       <button
-        disabled={selectedColor === "" || (isSizeAble && selectedSize === "")}
+        disabled={isSizeAble && selectedSize === ""}
         className="btn btn-secondary capitalize duration-300 hover:bg-transparent hover:text-slate-900 "
       >
         add to wishlist
