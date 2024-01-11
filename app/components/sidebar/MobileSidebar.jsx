@@ -3,21 +3,9 @@ import Category from "./Category";
 import PriceRange from "./PriceRange";
 import ClearAllFilter from "./ClearAllFilter";
 
-const MobileSidebar = ({
-  showSidebar,
-  setShowsidebar,
-  searchValue,
-  setSearchValue,
-  isLoading,
-  Products,
-  category,
-  setCategory,
-  colorValue,
-  setColorValue,
-  setPriceValue,
-  priceValue,
-  maxPriceValue,
-}) => {
+import SearchInput from "./SearchInput";
+
+const MobileSidebar = ({ setShowsidebar }) => {
   return (
     <div className={`fixed inset-0 z-30 bg-gray-700/[.4]`}>
       <div
@@ -48,41 +36,10 @@ const MobileSidebar = ({
           </svg>
           {/* </div> */}
         </button>
-        <input
-          type="text"
-          value={searchValue}
-          disabled={isLoading}
-          onChange={(e) => setSearchValue(e.target.value)}
-          placeholder="search product..."
-          className="input input-bordered input-warning input-sm w-[90%]"
-        />
-        <Category
-          Products={Products}
-          category={category}
-          setCategory={setCategory}
-          isLoading={isLoading}
-          dark={true}
-        />
-        {/* <Colors
-          Products={Products}
-          colorValue={colorValue}
-          setColorValue={setColorValue}
-          dark={true}
-        /> */}
-        <PriceRange
-          priceValue={priceValue}
-          setPriceValue={setPriceValue}
-          maxPriceValue={maxPriceValue}
-          dark={true}
-        />
-        <ClearAllFilter
-          setSearchValue={setSearchValue}
-          setCategory={setCategory}
-          setColorValue={setColorValue}
-          setPriceValue={setPriceValue}
-          maxPriceValue={maxPriceValue}
-          dark={true}
-        />
+        <SearchInput />
+        <Category dark={true} />
+        <PriceRange dark={true} />
+        <ClearAllFilter dark={true} />
       </div>
     </div>
   );

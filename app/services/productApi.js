@@ -1,14 +1,24 @@
+import { PAGE_SIZE } from "../components/pageSize";
 import supabase from "../supabase/supabase";
 
 // get all products
-export async function getAllProducts() {
-  let { data: Products, error } = await supabase.from("Products").select("*");
+export async function getAllProducts({ page }) {
+  const from = (page - 1) * PAGE_SIZE;
+  const to = from + PAGE_SIZE - 1;
+  let {
+    data: Products,
+    error,
+    count,
+  } = await supabase
+    .from("Products")
+    .select("*", { count: "exact" })
+    .range(from, to);
 
   if (error) {
     console.log(error);
     throw new Error(error);
   }
-  return Products;
+  return { Products, count };
 }
 
 // get featured products

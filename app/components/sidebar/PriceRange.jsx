@@ -1,14 +1,10 @@
-import { formateCurrency } from "@/app/helpers/formateCurrency";
+import { useProductContext } from "@/app/context/ProductContext";
 import React from "react";
 
-const PriceRange = ({
-  priceValue,
-  setPriceValue,
-  maxPriceValue,
-  dark = false,
-}) => {
+const PriceRange = ({ dark = false }) => {
+  const { priceValue, setPriceValue, maxPriceValue } = useProductContext();
   return (
-    <div className=" mt-8">
+    <div className=" ">
       <h3
         className={`mb-2 font-semibold capitalize ${
           dark ? " text-white" : "text-slate-900 "
@@ -16,8 +12,10 @@ const PriceRange = ({
       >
         price
       </h3>
-      <p className={` ${dark ? " text-white" : "text-slate-900 "}`}>
-        USD: <span className=" text-sm">(${priceValue})</span>
+      <p
+        className={` font-semibold ${dark ? " text-white" : "text-slate-900 "}`}
+      >
+        USD: <span className=" text-sm">(${priceValue}.00)</span>
       </p>
       <input
         type="range"
@@ -25,9 +23,7 @@ const PriceRange = ({
         max={maxPriceValue}
         value={priceValue}
         onChange={(e) => setPriceValue(e.target.value)}
-        className={`range ${
-          dark ? " range-primary" : "range-warning"
-        } range-xs`}
+        className={`range ${dark ? " range-info " : "range-warning"} range-xs`}
       />
     </div>
   );

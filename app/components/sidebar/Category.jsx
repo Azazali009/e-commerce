@@ -1,14 +1,11 @@
+import { useProductContext } from "@/app/context/ProductContext";
 import { getOptions } from "@/app/helpers/getOptions";
 import React from "react";
 
-const Category = ({
-  category,
-  setCategory,
-  Products,
-  isLoading,
-  dark = false,
-}) => {
+const Category = ({ dark = false }) => {
+  const { category, setCategory, Products, isLoading } = useProductContext();
   const categories = getOptions(Products, "category");
+  console.log(Products);
 
   return (
     <div className={` ${dark && " border-b-gray-900"} border-b pb-3`}>

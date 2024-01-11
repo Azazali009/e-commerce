@@ -1,17 +1,13 @@
+import { useProductContext } from "@/app/context/ProductContext";
 import React from "react";
 
-const ClearAllFilter = ({
-  setSearchValue,
-  setCategory,
-  setColorValue,
-  setPriceValue,
-  maxPriceValue,
-  dark = false,
-}) => {
+const ClearAllFilter = ({ dark = false }) => {
+  const { setSearchValue, setCategory, setPriceValue, maxPriceValue } =
+    useProductContext();
   const handleClick = () => {
     setSearchValue("");
     setCategory("All");
-    setColorValue("All");
+
     setPriceValue(maxPriceValue);
   };
   return (

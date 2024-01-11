@@ -15,7 +15,7 @@ const Sorting = ({ sortValue, setSortValue }) => {
         value={sortValue}
         onChange={handleChange}
       >
-        <option value="" selected disabled>
+        <option value="" selected>
           features
         </option>
         <option value="stock-asc">stock low - high (low stock first)</option>

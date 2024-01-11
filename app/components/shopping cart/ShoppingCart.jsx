@@ -3,6 +3,7 @@ import React from "react";
 import Cartitem from "./Cartitem";
 import Subtotal from "./Subtotal";
 import Link from "next/link";
+import EmptyCart from "./EmptyCart";
 
 const ShoppingCart = () => {
   const { cart, handleClearCart } = useCart();
@@ -15,20 +16,7 @@ const ShoppingCart = () => {
         }}
       /> */}
       {cart?.length === 0 ? (
-        <div className=" flex min-h-[50vh] items-center justify-center">
-          <div className=" flex flex-col items-center space-y-3">
-            <h3 className=" font-semibold">
-              No items found in the cart. Go to products and add some favourite
-              product to the cart
-            </h3>
-            <Link
-              href={"/products"}
-              className="btn btn-primary rounded-sm capitalize text-white shadow-xl transition-all duration-200 hover:bg-opacity-80 active:scale-90"
-            >
-              continue shopping
-            </Link>
-          </div>
-        </div>
+        <EmptyCart />
       ) : (
         <div className="min-h-dvh bg-gray-100 pt-20">
           <h1 className="mb-10 text-center text-2xl font-bold">Cart Items</h1>
@@ -44,13 +32,13 @@ const ShoppingCart = () => {
           <div className=" mx-auto flex justify-center gap-4 py-6 ">
             <Link
               href={"/products"}
-              className="btn btn-primary rounded-sm transition-all duration-200 hover:bg-opacity-80 active:scale-90"
+              className="btn btn-sm rounded-sm border-none bg-blue-600 capitalize text-white transition-all duration-200 hover:bg-opacity-80 active:scale-90"
             >
               continue shopping
             </Link>
             <button
               onClick={handleClearCart}
-              className="btn btn-error rounded-sm transition-all duration-200 hover:bg-opacity-80 active:scale-90"
+              className="btn btn-sm rounded-sm border-none bg-red-600 capitalize text-white transition-all duration-200 hover:bg-opacity-80 active:scale-90"
             >
               clear cart
             </button>

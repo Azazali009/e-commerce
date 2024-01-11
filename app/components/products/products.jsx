@@ -1,85 +1,33 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Sorting from "@/app/components/products/Sorting";
 import Card from "@/app/ui/Card";
 import ErrorMessage from "@/app/ui/ErrorMessage";
-import { useProducts } from "./useProducts";
 import Sidebar from "../sidebar/Sidebar";
 import PageSkeleton from "./PageSkeleton";
 
 import MobileSidebar from "../sidebar/MobileSidebar";
+import Pagination from "../pagination/Pagination";
+import { useProductContext } from "@/app/context/ProductContext";
+import { PAGE_SIZE } from "../pageSize";
 
 const Products = () => {
+  const {
+    isLoading,
+    isError,
+    filtureProduct,
+    setStockValue,
+    stockValue,
+    sortProducts,
+    sortValue,
+    setSortValue,
+    count,
+  } = useProductContext();
+
   const [showSidebar, setShowsidebar] = useState(false);
-  const [searchValue, setSearchValue] = useState("");
-  const [category, setCategory] = useState("All");
-  const [colorValue, setColorValue] = useState("All");
-  const [priceValue, setPriceValue] = useState(0);
-  const [maxPriceValue, setMaxPriceValue] = useState(0);
-  const [sortValue, setSortValue] = useState("");
-  const [stockValue, setStockValue] = useState("All");
-  const { Products, isLoading, isError } = useProducts();
 
-  let colors = Products?.map((product) => JSON.parse(product.colors));
-  colors = [...new Set(colors?.[0])];
-
-  // Filter by category
-  let filtureProduct = Products?.filter((product) =>
-    category === "All"
-      ? product
-      : product.category === category?.replace("_", " "),
-  );
-
-  // filter by colors
-  filtureProduct = filtureProduct?.filter((product) => {
-    let isMatch;
-    if (colorValue === "" || colorValue === "All") {
-      return product;
-    } else {
-      isMatch = JSON.parse(product.colors)
-        ?.map((color) => color.value)
-        ?.includes(colorValue);
-      return isMatch ? product : null;
-    }
-  });
-
-  // searching
-  filtureProduct = filtureProduct?.filter((product) => {
-    return !searchValue
-      ? product
-      : product.title
-          ?.toLocaleLowerCase()
-          ?.includes(searchValue?.toLocaleLowerCase());
-  });
-
-  // filter by price range
-  filtureProduct = filtureProduct?.filter(
-    (product) => product.price <= priceValue,
-  );
-
-  // filter by stock
-  filtureProduct = filtureProduct?.filter((product) => {
-    if (stockValue !== "All") {
-      return stockValue === "instock" ? product.stock > 0 : product.stock === 0;
-    } else return product;
-  });
-  // sorting
-  const [field, direction] = sortValue?.split("-");
-  const modifier = direction === "asc" ? 1 : -1;
-  const sortProducts = filtureProduct?.sort(
-    (a, b) => (a[field] - b[field]) * modifier,
-  );
-
-  useEffect(() => {
-    let maxPrice = Products?.map((product) => product.price)?.reduce(
-      (acc, cur) => Math.max(acc, cur),
-      0,
-    );
-    setMaxPriceValue(maxPrice);
-    setPriceValue(maxPrice);
-  }, [Products]);
-
+  const pageCount = Math.ceil(count / PAGE_SIZE);
   const handleStockClick = (e) => {
     setStockValue(e.target.value);
   };
@@ -92,7 +40,7 @@ const Products = () => {
       {!showSidebar && (
         <label
           onClick={() => setShowsidebar(true)}
-          className="group btn btn-circle swap swap-rotate btn-xs -mt-4 mb-2 ml-2 lg:hidden "
+          className="group btn btn-circle swap swap-rotate btn-xs -mt-4 mb-2 ml-2 border-none bg-gray-200 text-black lg:hidden "
         >
           <input type="checkbox" checked={showSidebar} />
           {/* hamburger icon */}
@@ -108,7 +56,7 @@ const Products = () => {
             </svg>
           </div>
 
-          <p className=" pointer-events-auto absolute left-full top-2 -mt-3 ml-2  translate-x-0 whitespace-nowrap rounded bg-primary px-2 py-1 text-white  opacity-100 group-hover:pointer-events-none group-hover:-translate-x-4 group-hover:opacity-0 ">
+          <p className=" pointer-events-auto absolute left-full top-2 -mt-3 ml-2  translate-x-0 whitespace-nowrap rounded bg-blue-400 px-2 py-1 text-blue-900  opacity-100 group-hover:pointer-events-none group-hover:-translate-x-4 group-hover:opacity-0 ">
             sidebar filter
           </p>
           <p className=" pointer-events-none absolute left-full top-2 -mt-3 ml-4 translate-x-4 whitespace-nowrap rounded bg-slate-700 px-2 py-1 text-white opacity-0 group-hover:pointer-events-auto group-hover:translate-x-0  group-hover:opacity-100">
@@ -116,47 +64,20 @@ const Products = () => {
           </p>
         </label>
       )}
-      {showSidebar && (
-        <MobileSidebar
-          showSidebar={showSidebar}
-          setShowsidebar={setShowsidebar}
-          searchValue={searchValue}
-          isLoading={isLoading}
-          Products={Products}
-          category={category}
-          setCategory={setCategory}
-          colorValue={colorValue}
-          setColorValue={setColorValue}
-          setSearchValue={setSearchValue}
-          setPriceValue={setPriceValue}
-          priceValue={priceValue}
-          maxPriceValue={maxPriceValue}
-        />
-      )}
+      {showSidebar && <MobileSidebar setShowsidebar={setShowsidebar} />}
       <div className=" sticky top-0 hidden lg:block">
-        <Sidebar
-          category={category}
-          setCategory={setCategory}
-          searchValue={searchValue}
-          setSearchValue={setSearchValue}
-          colorValue={colorValue}
-          setColorValue={setColorValue}
-          priceValue={priceValue}
-          maxPriceValue={maxPriceValue}
-          setPriceValue={setPriceValue}
-          Products={Products}
-          isLoading={isLoading}
-        />
+        <Sidebar />
       </div>
-      <div>
-        <div className="flex  flex-col items-center justify-between gap-4 px-4 sm:flex-row sm:gap-0 md:mb-8">
+      {/* main products section */}
+      <div className="py-6">
+        <div className="flex flex-col items-center justify-between gap-4 px-4 sm:flex-row sm:gap-0 md:mb-8">
           <div role="tablist" className="tabs-boxed tabs bg-gray-200  ">
             <button
               onClick={handleStockClick}
               value={"All"}
               role="tab"
-              className={`tab text-black ${
-                stockValue === "All" && " tab-active"
+              className={`tab capitalize text-black ${
+                stockValue === "All" && "bg-blue-500"
               }`}
             >
               All
@@ -165,8 +86,8 @@ const Products = () => {
               onClick={handleStockClick}
               value={"instock"}
               role="tab"
-              className={`tab text-black ${
-                stockValue === "instock" && " tab-active"
+              className={`tab capitalize text-black ${
+                stockValue === "instock" && "bg-blue-500"
               }`}
             >
               in stock
@@ -175,8 +96,8 @@ const Products = () => {
               onClick={handleStockClick}
               value={"outstock"}
               role="tab"
-              className={`tab text-black ${
-                stockValue === "outstock" && " tab-active"
+              className={`tab capitalize text-black ${
+                stockValue === "outstock" && "bg-blue-500"
               }`}
             >
               leading
@@ -209,6 +130,8 @@ const Products = () => {
             </div>
           )}
         </div>
+        {/* pagination */}
+        {pageCount > 1 && <Pagination />}
       </div>
     </div>
   );

@@ -25,7 +25,7 @@ const Card = ({ product }) => {
         <Image
           width={200}
           height={200}
-          className=" h-[100px] w-[50%] object-contain transition-all duration-300 group-hover:scale-105 sm:w-full lg:h-[300px] "
+          className=" h-[100px] w-full object-contain transition-all duration-300 group-hover:scale-105 lg:h-[300px] "
           src={firstImage}
           alt="car!"
         />
