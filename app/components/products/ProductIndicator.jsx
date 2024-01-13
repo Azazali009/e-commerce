@@ -14,7 +14,7 @@ const ProductIndicator = () => {
           showIndicator
             ? " pointer-events-auto visible translate-x-0 scale-100 opacity-100"
             : " pointer-events-none invisible -translate-x-40 scale-0 opacity-0"
-        } flex h-8 w-fit items-center justify-center rounded-full bg-gray-100 px-2 text-center text-[9px] font-bold capitalize text-slate-600 transition-all duration-1000 sm:w-48 sm:px-0 sm:text-base `}
+        } flex h-6 w-fit items-center justify-center rounded-full bg-gray-100 px-4 text-center text-[9px] font-bold capitalize text-slate-600 transition-all duration-1000 sm:h-8 sm:w-48 sm:px-0 sm:text-base `}
       >
         {" "}
         <span className=" mr-1 text-lg text-blue-600 sm:text-2xl">
