@@ -1,7 +1,9 @@
 "use client";
+import { useProductContext } from "@/app/context/ProductContext";
 import React from "react";
 
-const Sorting = ({ sortValue, setSortValue }) => {
+const Sorting = () => {
+  const { sortValue, setSortValue } = useProductContext();
   const handleChange = (e) => {
     setSortValue(e.target.value);
   };

@@ -11,6 +11,7 @@ export const ProductProvider = ({ children }) => {
   const [stockValue, setStockValue] = useState("All");
   const [sortValue, setSortValue] = useState("");
   const [maxPriceValue, setMaxPriceValue] = useState(0);
+  const [showSidebar, setShowsidebar] = useState(false);
 
   const { isLoading, isError, Products, count } = useProducts();
 
@@ -75,6 +76,8 @@ export const ProductProvider = ({ children }) => {
         setSortValue,
         maxPriceValue,
         setMaxPriceValue,
+        showSidebar,
+        setShowsidebar,
       }}
     >
       {children}

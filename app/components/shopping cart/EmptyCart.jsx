@@ -11,7 +11,7 @@ const EmptyCart = () => {
         </h3>
         <Link
           href={"/products"}
-          className="btn btn-sm rounded-sm border-none bg-blue-600 capitalize text-white transition-all duration-200 hover:bg-opacity-80 active:scale-90"
+          className="btn btn-sm rounded-sm border-none bg-blue-600 capitalize text-white shadow-xl transition-all duration-200 hover:bg-opacity-80 active:scale-90"
         >
           continue shopping
         </Link>

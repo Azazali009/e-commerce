@@ -2,10 +2,9 @@
 import React from "react";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from "react-responsive-carousel";
-import LeftLoader from "./LeftLoader";
-import ErrorMessage from "@/app/ui/ErrorMessage";
 import BackSvg from "@/app/ui/BackSvg";
 import { useRouter } from "next/navigation";
+import ReactImageMagnify from "react-image-magnify";
 
 const Left = ({ Product }) => {
   const router = useRouter();

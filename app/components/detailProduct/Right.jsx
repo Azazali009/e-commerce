@@ -9,6 +9,7 @@ import ErrorMessage from "@/app/ui/ErrorMessage";
 import { useCart } from "@/app/context/CartContext";
 import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
+import { formateNumber } from "@/app/helpers/formateNumber";
 
 const Right = ({ Product }) => {
   const router = useRouter();
@@ -82,13 +83,13 @@ const Right = ({ Product }) => {
         <span>{rating}</span>
         <span className="text-sm">
           {" "}
-          (<span className=" font-semibold">{reviews}</span>
+          (<span className=" font-semibold">{formateNumber(reviews)} </span>
           reviews)
         </span>
       </div>
       <p className="font-semibold capitalize text-slate-500">
         category:{" "}
-        <Link className="font-normal hover:text-red-300" href={""}>
+        <Link className="font-normal hover:text-yellow-500" href={""}>
           {category}
         </Link>{" "}
       </p>
@@ -141,13 +142,13 @@ const Right = ({ Product }) => {
       <button
         disabled={isSizeAble && selectedSize === ""}
         onClick={handleClick}
-        className="btn btn-primary capitalize duration-300 hover:bg-transparent hover:text-slate-900 "
+        className="btn btn-primary bg-blue-600 capitalize shadow-lg duration-300 hover:bg-transparent hover:text-slate-900 hover:shadow-none "
       >
         add to cart
       </button>
       <button
         disabled={isSizeAble && selectedSize === ""}
-        className="btn btn-secondary capitalize duration-300 hover:bg-transparent hover:text-slate-900 "
+        className="btn btn-secondary capitalize shadow-lg duration-300 hover:bg-transparent hover:text-slate-900 hover:shadow-none "
       >
         add to wishlist
       </button>

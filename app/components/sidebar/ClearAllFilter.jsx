@@ -14,9 +14,7 @@ const ClearAllFilter = ({ dark = false }) => {
     <div className={`${dark && "border-t-gray-900"} mt-6 border-t pt-4`}>
       <button
         onClick={handleClick}
-        className={` btn  ${
-          dark ? "btn-primary" : "btn-error"
-        } btn-sm rounded font-normal capitalize shadow-lg`}
+        className={` btn btn-error btn-sm rounded font-normal capitalize shadow-lg transition-all duration-300 active:scale-90`}
       >
         clear filters
       </button>

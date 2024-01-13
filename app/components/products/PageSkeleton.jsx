@@ -12,7 +12,7 @@ const PageSkeleton = () => {
             <div className="skeleton h-6 w-56"></div>
           </div>
           <div className="skeleton h-6 w-52 [grid-column:1/-1]"></div>
-          {[...new Array(6)]?.map((_, i) => (
+          {[...new Array(3)]?.map((_, i) => (
             <CardSkeleton key={i} />
           ))}
         </div>
