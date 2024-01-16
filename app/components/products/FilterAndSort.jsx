@@ -4,7 +4,7 @@ import Sorting from "./Sorting";
 
 const FilterAndSort = () => {
   return (
-    <div className="flex flex-col  justify-between gap-4 px-4 sm:flex-row sm:gap-0 md:mb-8">
+    <div className="flex items-center justify-between gap-1 px-0 sm:gap-0 sm:px-4 md:mb-8">
       <FilterStockTabs />
       <div>
         <Sorting />

@@ -17,7 +17,7 @@ const ProductIndicator = () => {
         } flex h-6 w-fit items-center justify-center rounded-full bg-gray-100 px-4 text-center text-[9px] font-bold capitalize text-slate-600 transition-all duration-1000 sm:h-8 sm:w-48 sm:px-0 sm:text-base `}
       >
         {" "}
-        <span className=" mr-1 text-lg text-blue-600 sm:text-2xl">
+        <span className=" text-primaryBlue mr-1 text-lg sm:text-2xl">
           {sortProducts?.length}
         </span>{" "}
         products found
@@ -31,7 +31,7 @@ const ProductIndicator = () => {
           <input
             type="checkbox"
             onChange={handleChange}
-            className="toggle toggle-primary toggle-sm bg-gray-500 opacity-30 transition-opacity duration-300 sm:toggle-md checked:bg-blue-500 checked:opacity-100"
+            className="toggle toggle-primary toggle-sm bg-gray-500 opacity-30 transition-opacity duration-300 sm:toggle-md checked:bg-[#4DC4FF] checked:opacity-100"
           />
         </label>
       </div>

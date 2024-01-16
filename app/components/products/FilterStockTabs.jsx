@@ -7,13 +7,16 @@ const FilterStockTabs = () => {
     setStockValue(e.target.value);
   };
   return (
-    <div role="tablist" className="tabs-boxed tabs bg-gray-200  ">
+    <div
+      role="tablist"
+      className="tabs-boxed tabs tabs-sm bg-gray-200 sm:tabs-md  "
+    >
       <button
         onClick={handleStockClick}
         value={"All"}
         role="tab"
-        className={`tab capitalize text-black ${
-          stockValue === "All" && "bg-blue-500"
+        className={`tab px-2 text-xs capitalize text-black sm:px-4 sm:text-base ${
+          stockValue === "All" && "bg-primaryBlue"
         }`}
       >
         All
@@ -22,8 +25,8 @@ const FilterStockTabs = () => {
         onClick={handleStockClick}
         value={"instock"}
         role="tab"
-        className={`tab capitalize text-black ${
-          stockValue === "instock" && "bg-blue-500"
+        className={`tab whitespace-nowrap px-2 text-xs capitalize text-black sm:px-4 sm:text-base ${
+          stockValue === "instock" && "bg-primaryBlue"
         }`}
       >
         in stock
@@ -32,8 +35,8 @@ const FilterStockTabs = () => {
         onClick={handleStockClick}
         value={"outstock"}
         role="tab"
-        className={`tab capitalize text-black ${
-          stockValue === "outstock" && "bg-blue-500"
+        className={`tab whitespace-nowrap px-2 text-xs capitalize text-black sm:px-4 sm:text-base ${
+          stockValue === "outstock" && "bg-primaryBlue"
         }`}
       >
         leading

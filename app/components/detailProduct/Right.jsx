@@ -4,8 +4,6 @@ import Link from "next/link";
 import React, { useState } from "react";
 import ReactStars from "react-stars";
 import { formateCurrency } from "@/app/helpers/formateCurrency";
-import RightLoader from "./RightLoader";
-import ErrorMessage from "@/app/ui/ErrorMessage";
 import { useCart } from "@/app/context/CartContext";
 import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
@@ -26,10 +24,9 @@ const Right = ({ Product }) => {
     description,
     price,
     category,
-    colors,
     isSizeAble,
   } = Product;
-  const colorsArr = JSON?.parse(colors);
+  // const colorsArr = JSON?.parse(colors);
   const image = JSON?.parse(images)[0]?.src;
 
   const handleClick = () => {
@@ -142,7 +139,7 @@ const Right = ({ Product }) => {
       <button
         disabled={isSizeAble && selectedSize === ""}
         onClick={handleClick}
-        className="btn btn-primary bg-blue-600 capitalize shadow-lg duration-300 hover:bg-transparent hover:text-slate-900 hover:shadow-none "
+        className="btn btn-primary border-primaryBlue bg-primaryBlue capitalize text-blue-50 shadow-lg duration-300 hover:bg-transparent hover:text-slate-900 hover:shadow-none "
       >
         add to cart
       </button>

@@ -32,7 +32,7 @@ const ShoppingCart = () => {
           <div className=" mx-auto flex justify-center gap-4 py-6 ">
             <Link
               href={"/products"}
-              className="btn btn-sm rounded-md border-none bg-blue-600 capitalize text-white transition-all duration-200 hover:bg-opacity-80 active:scale-90"
+              className="btn btn-sm rounded-md border-none bg-primaryBlue capitalize text-blue-50 transition-all duration-200 hover:bg-opacity-80 active:scale-90"
             >
               continue shopping
             </Link>

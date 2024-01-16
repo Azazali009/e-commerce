@@ -9,7 +9,7 @@ import { useProductContext } from "@/app/context/ProductContext";
 const MobileSidebar = () => {
   const { setShowsidebar } = useProductContext();
   return (
-    <div className={`bg-gray-700/[.4]" fixed inset-0 z-30 `}>
+    <div className={`fixed  inset-0 z-30 bg-gray-700/[.4] `}>
       <div
         className={`animate-in absolute left-0 top-0 z-30 flex
         min-h-dvh w-[50%] flex-col gap-3 bg-black px-3 pb-8 pt-6`}
