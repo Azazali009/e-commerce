@@ -3,11 +3,12 @@ import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a lo
 import { Carousel } from "react-responsive-carousel";
 import FeatureProduct from "./FeatureProduct";
 import Banner from "./Banner";
+import DayDealSection from "../dayDeal/DayDealSection";
 
 const HeroBanner = () => {
   return (
     <div className="mx-auto max-w-6xl ">
-      <div className="relative flex justify-center border-b border-gray-300 pb-20">
+      <div className="relative flex justify-center border-b pb-20">
         <Carousel
           autoPlay
           infiniteLoop
@@ -39,6 +40,7 @@ const HeroBanner = () => {
           />
         </Carousel>
       </div>
+      <DayDealSection />
       <FeatureProduct />
     </div>
   );
