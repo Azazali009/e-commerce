@@ -12,7 +12,7 @@ const DealBanner = () => {
   const hours = Math.floor(secRemaining / 60 / 60);
 
   useEffect(() => {
-    const storedData = localStorage.getItem("timer") || 0;
+    const storedData = localStorage.getItem("timer");
     setSecRemaining(JSON.parse(storedData));
   }, []);
   useEffect(() => {
