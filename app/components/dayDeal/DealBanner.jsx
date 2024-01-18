@@ -3,18 +3,19 @@ import React, { useEffect, useState } from "react";
 
 const DealBanner = () => {
   const counterDurationInHours = 3;
-  const [secRemaining, setSecRemaining] = useState(
-    counterDurationInHours * 60 * 60,
-  );
+  const [secRemaining, setSecRemaining] = useState(function () {
+    const storedValue =
+      localStorage.getItem("timer") || counterDurationInHours * 60 * 60;
+    return JSON.parse(storedValue);
+  });
   let mins = Math.floor(secRemaining / 60);
   mins = mins % 60;
   const seconds = Math.floor(secRemaining % 60);
   const hours = Math.floor(secRemaining / 60 / 60);
 
   useEffect(() => {
-    const storedData = localStorage.getItem("timer");
-    setSecRemaining(JSON.parse(storedData));
-  }, []);
+    localStorage.setItem("timer", JSON.stringify(secRemaining));
+  }, [secRemaining]);
   useEffect(() => {
     localStorage.setItem("timer", JSON.stringify(secRemaining));
   }, [secRemaining]);
