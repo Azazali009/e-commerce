@@ -2,15 +2,26 @@ import Image from "next/image";
 import React, { useEffect, useState } from "react";
 
 const DealBanner = () => {
-  const [secRemaining, setSecRemaining] = useState(10800);
-
+  const counterDurationInHours = 3;
+  const [secRemaining, setSecRemaining] = useState(
+    counterDurationInHours * 60 * 60,
+  );
   let mins = Math.floor(secRemaining / 60);
   mins = mins % 60;
   const seconds = Math.floor(secRemaining % 60);
   const hours = Math.floor(secRemaining / 60 / 60);
+
+  useEffect(() => {
+    const storedData = localStorage.getItem("timer") || 0;
+    setSecRemaining(JSON.parse(storedData));
+  }, []);
+  useEffect(() => {
+    localStorage.setItem("timer", JSON.stringify(secRemaining));
+  }, [secRemaining]);
+
   useEffect(function () {
     const id = setInterval(function () {
-      setSecRemaining((cur) => cur - 1);
+      setSecRemaining((cur) => (cur > 0 ? cur - 1 : 0));
     }, 1000);
     return () => clearInterval(id);
   }, []);
@@ -40,7 +51,7 @@ const DealBanner = () => {
             </span>
           )}
         </p>
-        <p className="space-x-2 text-[9px] font-extralight sm:text-sm">
+        <p className="space-x-4 text-[9px] font-extralight sm:text-sm">
           {" "}
           <span>hours</span>
           <span>minutes</span>
